@@ -27,12 +27,12 @@ def tagline() -> dict[str, str]:
 
 @app.get("/api/leaderboard")
 def leaderboard_from_db() -> dict[str, list[dict]]:
-    if not settings.supabase_url or not settings.supabase_service_role_key:
+    if not settings.supabase_url or not settings.supabase_secret_key:
         raise HTTPException(
             status_code=503,
-            detail="Supabase is not configured (SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY)",
+            detail="Supabase is not configured (SUPABASE_URL, SUPABASE_SECRET_KEY)",
         )
-    client = create_client(settings.supabase_url, settings.supabase_service_role_key)
+    client = create_client(settings.supabase_url, settings.supabase_secret_key)
     result = (
         client.table("athletes")
         .select("id, name, score, weekly_gain_pct, is_you")

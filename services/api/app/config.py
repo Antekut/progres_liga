@@ -6,7 +6,7 @@ class Settings(BaseSettings):
 
     cors_origins: str = "http://localhost:3000"
     supabase_url: str = ""
-    supabase_service_role_key: str = ""
+    supabase_secret_key: str = ""
 
     @property
     def cors_origin_list(self) -> list[str]:

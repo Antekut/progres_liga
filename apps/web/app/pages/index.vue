@@ -32,9 +32,9 @@ onMounted(async () => {
   }
 
   const url = config.public.supabaseUrl
-  const key = config.public.supabaseAnonKey
+  const key = config.public.supabasePublishableKey
   if (!url || !key) {
-    dbError.value = 'Set NUXT_PUBLIC_SUPABASE_URL and NUXT_PUBLIC_SUPABASE_ANON_KEY'
+    dbError.value = 'Set NUXT_PUBLIC_SUPABASE_URL and NUXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY'
     return
   }
 
