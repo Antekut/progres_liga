@@ -1,0 +1,21 @@
+node_modules/
+.turbo
+.nuxt
+.output
+.vercel
+dist
+
+.env
+.env.*
+!.env.example
+
+__pycache__/
+*.py[cod]
+.venv/
+.python-version
+
+.DS_Store
+
+# Supabase
+supabase/.branches
+supabase/.temp

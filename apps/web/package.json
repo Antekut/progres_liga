@@ -1,0 +1,34 @@
+{
+  "name": "web",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "@nuxt/eslint": "^1.15.2",
+    "@supabase/supabase-js": "^2.104.0",
+    "@typescript-eslint/eslint-plugin": "^8.59.0",
+    "@typescript-eslint/parser": "^8.59.0",
+    "eslint": "^9.39.4",
+    "eslint-plugin-vue": "^10.8.0",
+    "nuxt": "^4.4.2",
+    "vue": "^3.5.32",
+    "vue-eslint-parser": "^10.4.0",
+    "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "lint-staged": "^16.4.0",
+    "typescript": "^5.9.3"
+  },
+  "lint-staged": {
+    "*.{js,ts,vue}": "eslint --fix"
+  }
+}

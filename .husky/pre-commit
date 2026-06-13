@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+set -e
+cd "$(dirname "$0")/.." || exit 1
+(cd apps/web && pnpm exec lint-staged)
+(cd services/api && uv run pre-commit run --show-diff-on-failure)

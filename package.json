@@ -1,0 +1,20 @@
+{
+  "name": "progres_liga",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "bash dev.sh",
+    "dev:web": "pnpm --filter web dev",
+    "env:local": "bash scripts/sync-local-env.sh",
+    "lint": "turbo run lint",
+    "precommit": "cd services/api && uv run pre-commit run --all-files",
+    "prepare": "husky",
+    "supabase:start": "supabase start",
+    "supabase:stop": "supabase stop"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "turbo": "^2.9.6"
+  },
+  "packageManager": "pnpm@10.32.1"
+}
