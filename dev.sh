@@ -29,6 +29,11 @@ else
     exit 1
 fi
 
+if [ ! -d "$REPO_ROOT/node_modules" ]; then
+    echo "Installing JS dependencies..."
+    (cd "$REPO_ROOT" && pnpm install)
+fi
+
 echo "Starting API (FastAPI)..."
 (cd "$REPO_ROOT/services/api" && set -a && [ -f .env ] && source .env; set +a && uv run uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload) &
 PIDS+=($!)
