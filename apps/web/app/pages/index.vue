@@ -55,8 +55,8 @@ onMounted(async () => {
 <template>
   <main class="page">
     <header class="hero">
-      <p class="badge">ProgresLiga</p>
-      <h1>Ranking progresu</h1>
+      <h1 class="site-title">Progres <span>Liga</span></h1>
+      <p class="tag">Ranking progresu</p>
       <p v-if="tagline" class="subtitle">{{ tagline }}</p>
       <p v-else-if="apiError" class="err">{{ apiError }}</p>
       <p v-else class="muted">Ładowanie…</p>
@@ -102,30 +102,40 @@ onMounted(async () => {
 }
 
 .hero {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
-.badge {
-  display: inline-block;
-  margin: 0 0 0.5rem;
-  padding: 0.2rem 0.6rem;
-  border-radius: 999px;
-  background: #1e3a2f;
-  color: #6ee7a8;
-  font-size: 0.75rem;
+.site-title {
+  margin: 0;
+  font-size: clamp(2.5rem, 10vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: #f4f8fb;
+}
+
+.site-title span {
+  background: linear-gradient(135deg, #6ee7a8 0%, #34d399 50%, #a7f3d0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.tag {
+  margin: 0.75rem 0 0;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-}
-
-h1 {
-  margin: 0 0 0.5rem;
-  font-size: 2rem;
+  color: #6b7d8c;
 }
 
 .subtitle {
   color: #9aa8b5;
-  margin: 0;
+  margin: 0.75rem 0 0;
+  font-size: 1.05rem;
+  line-height: 1.5;
 }
 
 .your-rank {
