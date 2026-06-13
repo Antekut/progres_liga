@@ -16,15 +16,17 @@ cleanup() {
 
 trap cleanup INT TERM
 
-if command -v supabase >/dev/null 2>&1; then
+if [ -f "$REPO_ROOT/apps/web/.env" ] && [ -f "$REPO_ROOT/services/api/.env" ]; then
+    echo "Using apps/web/.env and services/api/.env"
+elif [ "${LOCAL_SUPABASE:-}" = "1" ] && command -v supabase >/dev/null 2>&1; then
     echo "Starting Supabase (local)..."
-    (cd "$REPO_ROOT" && supabase start) || echo "Supabase start skipped (already running or CLI missing)"
-    if [ ! -f "$REPO_ROOT/apps/web/.env" ]; then
-        echo "Writing local .env files from supabase status..."
-        bash "$REPO_ROOT/scripts/sync-local-env.sh"
-    fi
+    (cd "$REPO_ROOT" && supabase start)
+    echo "Writing local .env files from supabase status..."
+    bash "$REPO_ROOT/scripts/sync-local-env.sh"
 else
-    echo "Supabase CLI not found — skip local DB or install: https://supabase.com/docs/guides/cli"
+    echo "Missing .env files. Copy apps/web/.env.example and services/api/.env.example, then fill in your Supabase keys."
+    echo "For local Supabase instead: LOCAL_SUPABASE=1 pnpm dev"
+    exit 1
 fi
 
 echo "Starting API (FastAPI)..."
