@@ -16,6 +16,8 @@ __pycache__/
 
 .DS_Store
 
+AGENTS_dev.md
+
 # Supabase
 supabase/.branches
 supabase/.temp
